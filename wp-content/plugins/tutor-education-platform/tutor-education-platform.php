@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Tutor Education Platform
  * Description: Core education platform plugin for live online classes, roles, scheduling metadata, and student dashboard widgets.
- * Version: 0.2.1
+ * Version: 0.3.0
  * Author: Tutor New Website
  */
 
@@ -16,11 +16,12 @@ require_once plugin_dir_path(__FILE__) . 'includes/class-tep-post-types.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-tep-class-sessions.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-tep-dashboard-shortcodes.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-tep-version-manager.php';
+require_once plugin_dir_path(__FILE__) . 'includes/class-tep-people-enrollments-admin.php';
 
 final class TEP_Platform
 {
     private const OPTION_GOOGLE_CONNECTED = 'tep_google_connected';
-    private const VERSION = '0.2.1';
+    private const VERSION = '0.3.0';
 
     public static function init(): void
     {
@@ -64,6 +65,8 @@ final class TEP_Platform
             [self::class, 'render_platform_settings_page'],
             'dashicons-welcome-learn-more'
         );
+
+        TEP_People_Enrollments_Admin::register_submenus();
     }
 
     public static function register_settings(): void
