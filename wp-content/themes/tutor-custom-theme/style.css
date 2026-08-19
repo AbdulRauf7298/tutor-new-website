@@ -1,0 +1,54 @@
+/*
+Theme Name: Tutor Custom Theme
+Description: Custom education-focused theme shell for Tutor New Website.
+Version: 0.1.0
+Author: Tutor New Website
+*/
+
+:root {
+  --tep-primary: #153b88;
+  --tep-accent: #14b8a6;
+  --tep-text: #1f2937;
+  --tep-bg: #f8fafc;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--tep-bg);
+  color: var(--tep-text);
+}
+
+.tep-hero {
+  background: linear-gradient(135deg, var(--tep-primary), #1d4ed8);
+  color: #fff;
+  padding: 4rem 1rem;
+}
+
+.tep-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tep-btn {
+  display: inline-block;
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.tep-btn-primary { background: #fff; color: var(--tep-primary); }
+.tep-btn-secondary { background: var(--tep-accent); color: #fff; }
+
+.tep-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.tep-card {
+  background: #fff;
+  border-radius: .75rem;
+  padding: 1rem;
+}
