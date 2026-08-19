@@ -67,4 +67,4 @@ Upgrades run safely during plugin version updates.
 - FILES CREATED: documentation and secure config templates
 - DATABASE CHANGES: none
 - FEATURES: architecture and roadmap definitions only
-- NEXT PHASE: 1 (pending approval)
+- NEXT PHASE: 1 (in progress: modular skeleton + migrations + capability map)

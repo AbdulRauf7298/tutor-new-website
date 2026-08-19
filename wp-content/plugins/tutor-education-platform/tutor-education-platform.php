@@ -2,13 +2,16 @@
 /**
  * Plugin Name: Tutor Education Platform
  * Description: Core education platform plugin for live online classes, roles, scheduling metadata, and student dashboard widgets.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Author: Tutor New Website
  */
 
 if (! defined('ABSPATH')) {
     exit;
 }
+
+require_once plugin_dir_path(__FILE__) . 'includes/class-tep-capability-map.php';
+require_once plugin_dir_path(__FILE__) . 'includes/class-tep-migrations.php';
 
 final class TEP_Platform
 {
@@ -30,34 +33,13 @@ final class TEP_Platform
     {
         self::register_roles();
         self::register_post_types();
+        TEP_Migrations::run_pending_migrations();
         flush_rewrite_rules();
     }
 
     public static function register_roles(): void
     {
-        add_role('education_administrator', 'Education Administrator', [
-            'read' => true,
-            'edit_posts' => true,
-            'manage_tep_platform' => true,
-            'manage_tep_sessions' => true,
-        ]);
-
-        add_role('teacher', 'Teacher', [
-            'read' => true,
-            'manage_tep_sessions' => true,
-            'edit_tep_class_sessions' => true,
-        ]);
-
-        add_role('student', 'Student', ['read' => true]);
-        add_role('parent_guardian', 'Parent/Guardian', ['read' => true]);
-        add_role('accountant', 'Accountant', ['read' => true, 'manage_woocommerce' => true]);
-
-        $admin = get_role('administrator');
-        if ($admin instanceof WP_Role) {
-            $admin->add_cap('manage_tep_platform');
-            $admin->add_cap('manage_tep_sessions');
-            $admin->add_cap('edit_tep_class_sessions');
-        }
+        TEP_Capability_Map::register_roles();
     }
 
     public static function register_post_types(): void
